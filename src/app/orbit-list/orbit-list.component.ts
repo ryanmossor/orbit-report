@@ -9,7 +9,7 @@ import { Satellite } from '../satellite';
 export class OrbitListComponent implements OnInit {
 
   // @Input() declares that satellites is a property that will be passed to the component with [satellites]="sourceList"
-  @Input() satellites: Satellite[];
+  @Input() satellites: Satellite[] = [];
 
   constructor() { }
 
