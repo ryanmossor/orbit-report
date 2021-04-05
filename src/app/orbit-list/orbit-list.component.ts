@@ -1,0 +1,19 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { Satellite } from '../satellite';
+
+@Component({
+  selector: 'orbit-list',
+  templateUrl: './orbit-list.component.html',
+  styleUrls: ['./orbit-list.component.css']
+})
+export class OrbitListComponent implements OnInit {
+
+  // @Input() declares that satellites is a property that will be passed to the component with [satellites]="sourceList"
+  @Input() satellites: Satellite[];
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
