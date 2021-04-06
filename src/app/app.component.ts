@@ -10,7 +10,8 @@ export class AppComponent {
   title = 'orbit-report';
   satellitesUrl: string = 'https://handlers.education.launchcode.org/static/satellites.json';
 
-  sourceList: any;
+  sourceList: Satellite[];
+  displayList: Satellite[];
 
   // constructor() {
   //   this.sourceList = [
@@ -32,7 +33,22 @@ export class AppComponent {
           let satellite = new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
           this.sourceList.push(satellite);
         }
+        // make a copy of the sourceList to be shown to user
+        this.displayList = this.sourceList.slice(0);
       },AppComponent.bind(this));
     },AppComponent.bind(this));
+  }
+
+  search(searchTerm: string): void {
+    let matchingSatellites: Satellite[] = [];
+    searchTerm = searchTerm.toLowerCase();
+    for (let i = 0; i < this.sourceList.length; i++) {
+      let name = this.sourceList[i].name.toLowerCase();
+      if (name.indexOf(searchTerm) >= 0) {
+        matchingSatellites.push(this.sourceList[i]);
+      }
+    }
+    // assign displayList to array of matching satellites; Angular re-makes the table using only matched search results
+    this.displayList = matchingSatellites;
   }
 }
