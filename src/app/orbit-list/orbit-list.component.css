@@ -3,7 +3,7 @@
   color: #dd5;
 }
 
-.table-row:nth-child(odd) {
+.table-row:nth-child(even) {
   background-color: #add8e6;
 }
 
